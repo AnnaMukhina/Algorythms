@@ -92,12 +92,12 @@ public class E {
             for(int v : adj.get(current)) {
                 if(v == next) {
                     ok = 1;
+                    break;
                 }
                 else {
                     ok = 0;
                 }
             }
-            System.out.println(ok);
             if(ok==1) {
                 isHamiltonian = true;
             }
@@ -125,7 +125,7 @@ public class E {
     }
 
     public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new FileReader("resources/hamiltonian.in"));
+        BufferedReader in = new BufferedReader(new FileReader("hamiltonian.in"));
 
         String[] input = in.readLine().split(" ");
 
@@ -135,24 +135,9 @@ public class E {
 
         in.close();
 
-        /*if(graph.topologicalSort()) {
-            int beg=0;
-            int end=graph.answer.length-1;
-            while(beg < end) {
-                if(graph.isHamiltonian) {
-                    graph.checkHamiltonian(graph.answer[beg], graph.answer[beg + 1]);
-                    beg++;
-                }
-                else{
-                    break;
-                }
-            }
-        }*/
         graph.giveAnswer();
 
-        FileWriter out = new FileWriter("resources/hamiltonian.out");
-
-
+        FileWriter out = new FileWriter("hamiltonian.out");
 
         if(graph.isHamiltonian) {
             out.write("YES");
